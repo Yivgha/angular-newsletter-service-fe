@@ -5,13 +5,21 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { PostComponent } from './post/post.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'posts', component: PostsComponent },
-  { path: '**', component: ErrorPageComponent },
+  { path: 'home', title: 'Home', component: HomeComponent },
+  { path: 'about', title: 'About', component: AboutComponent },
+  { path: 'contact', title: 'Contact', component: ContactComponent },
+  { path: 'posts', title: 'Posts', component: PostsComponent },
+  {
+    path: 'posts/:id',
+    title: 'Post',
+    component: PostComponent,
+    pathMatch: 'full',
+  },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', title: 'Error', component: ErrorPageComponent },
 ];
 
 @NgModule({
