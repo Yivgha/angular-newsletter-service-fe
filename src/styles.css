@@ -18,6 +18,16 @@ body {
   padding: 0;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 !important;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -40,6 +50,7 @@ h2 {
 
 p {
   font-size: 14px;
+  margin: 0;
 }
 
 /* Hyperlink */
@@ -98,5 +109,11 @@ button:disabled {
   cursor: auto;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
