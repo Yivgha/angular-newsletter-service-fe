@@ -1,10 +1,32 @@
 <app-navbar></app-navbar>
-<section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto min-h-[550px]">
-        <p>posts works!</p>
+<section class="text-gray-600 body-font min-h-[569px] w-full px-2 md:px-5">
+    <div class="container mx-auto py-5 px-0 justify-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6"
+            *ngIf="posts.length > 0; else noPostsMessage">
+            @for (post of posts; track post.id) {
+            <div [id]="post.id" class="flex flex-col gap-3 p-3 w-full border-2 border-indigo-600 rounded">
+                <a [routerLink]="['/posts/', post.id]">
+
+                    <div class="block relative h-48 rounded overflow-hidden">
+                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
+                            src="https://dummyimage.com/420x260">
+                    </div>
+                    <div class="mt-4 flex flex-col gap-1 w-full">
+                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{post.title}}</h3>
+                        <ul class="mt-1 flex flex-row gap-1">
+                            <li *ngFor="let tag of post.tags">{{ tag }}</li>
+                        </ul>
+                        <p class="text-gray-900 title-font text-sm">{{post.summary}}</p>
+
+                    </div>
+                </a>
+            </div>
+            }
+        </div>
+
+        <ng-template #noPostsMessage>
+            <p>No posts available.</p>
+        </ng-template>
     </div>
-
 </section>
-
 <app-footer></app-footer>
-<router-outlet></router-outlet>
