@@ -1,27 +1,33 @@
 # NewsletterServiceFe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+![https://img.shields.io/badge/-Angular-DD0031?style=flat-square&logo=angular&logoColor=white](https://img.shields.io/badge/-Angular-DD0031?style=flat-square&logo=angular&logoColor=white) ![https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square) ![https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss](https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss) ![https://img.shields.io/badge/%20-Angular%20Material-blue?style=for-the-badge&logo=angular](https://img.shields.io/badge/%20-Angular%20Material-blue?style=for-the-badge&logo=angular)
 
-## Development server
+This is simple newsletter service, generated with Angular 17.3.7. You can see four first posts on main page, search posts by a tag name or select tags from dropdown menu.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Main](./src/assets/fe-main.jpg)
 
-## Code scaffolding
+## Main page
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You can type tag name in searchbar and after click on button, only posts including this tag will be shown. If you clear search field and click button again, you'll see default four posts.
 
-## Build
+![Main](./src/assets/search-bar.jpg)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+You can select a tag name from dropdown menu and only posts including selected option will be shown. After click on "All" option, default four posts will be shown. The same logic is on tag click on each post card.
 
-## Running unit tests
+![Main](./src/assets/select.jpg)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Post card
 
-## Running end-to-end tests
+Each post card on Home or Posts page is clickable. You can click on tag buttons to render posts by tag. If you click on Summary or Content, you'll be able to see hidden text.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+![Main](./src/assets/clickable.jpg)
 
-## Further help
+Also you can click on post's image and open post page. On this page you can see all detailed info and big image. On Goback button click you'll be redirected on previous page.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![Main](./src/assets/post.jpg)
+
+## Posts page
+
+On posts page renders only list of first 10 posts (potentially, some infinite scroll logic can be added). All post cards are reusable and have the same logic as on main page.
+
+![Main](./src/assets/posts.jpg)
