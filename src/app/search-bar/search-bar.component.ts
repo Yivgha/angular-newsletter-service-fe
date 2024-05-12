@@ -50,12 +50,10 @@ export class SearchBarComponent {
       this.loadPosts.emit();
       return;
     }
-    console.log('tag by search', tag);
 
     this.postService.getPostsByTag(tag).subscribe({
       next: (posts: any) => {
         this.posts = posts;
-        console.log('posts by search', posts);
         this.searchEvent.emit(tag);
       },
       error: (error: any) => {

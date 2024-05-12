@@ -1,5 +1,5 @@
 <mat-form-field [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="getFloatLabelValue()"
-    class="w-full flex flex-row items-center">
+    class="w-full flex flex-row items-center h-full">
     <input matInput placeholder="Search by tag name" required #tagInput>
     <button mat-button matSuffix class="mr-3" (click)="searchPosts(tagInput.value)">
         <mat-icon>search</mat-icon>

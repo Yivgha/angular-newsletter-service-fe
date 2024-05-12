@@ -39,7 +39,6 @@ export class PostComponent implements OnInit {
         )
         .subscribe((post: Post) => {
           this.post = post;
-          console.log(post);
           this.loadingSpinner = false;
         });
     }

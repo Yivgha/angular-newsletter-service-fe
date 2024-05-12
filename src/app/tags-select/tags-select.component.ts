@@ -55,12 +55,10 @@ export class TagsSelectComponent {
       this.loadPosts.emit();
       return;
     }
-    console.log('tag by select', tag);
 
     this.postService.getPostsByTag(tag).subscribe({
       next: (posts: any) => {
         this.posts = posts;
-        console.log('posts by select', posts);
         this.searchTagEvent.emit(tag);
       },
       error: (error: any) => {

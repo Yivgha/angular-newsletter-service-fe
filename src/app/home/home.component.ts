@@ -57,7 +57,6 @@ export class HomeComponent implements OnInit {
     this.postService.getPosts().subscribe({
       next: (posts: any) => {
         this.uniqueTags = this.extractUniqueTags(posts);
-        console.log(this.uniqueTags);
       },
       error: (error: any) => {
         console.error(error);
@@ -76,11 +75,9 @@ export class HomeComponent implements OnInit {
   }
 
   loadByTagHandler(tag: string) {
-    console.log('Tag clicked:', tag);
     this.postService.getPostsByTag(tag).subscribe({
       next: (posts: any) => {
         this.posts = posts;
-        console.log('posts by tag click', posts);
       },
       error: (error: any) => {
         console.error(error);

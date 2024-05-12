@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
 <section class="text-gray-600 body-font min-h-[569px] w-full px-2 md:px-5">
 
-    <div class="mx-auto py-5 justify-center flex flex-col items-center gap-8">
-        <div class="flex flex-col md:flex-row gap-3 w-full items-center">
+    <div class="mx-auto py-5 justify-center flex flex-col items-center gap-8 ">
+        <div class="flex flex-col md:flex-row gap-3 w-full items-center m-0 p-0 h-30">
             <app-tags-select [posts]="posts" [uniqueTags]="uniqueTags" (loadPosts)="loadPosts()"
-                (searchTagEvent)="loadByTagHandler($event)" class=" w-full flex-1"></app-tags-select>
-            <app-search-bar [posts]="posts" (loadPosts)="loadPosts()" class="w-full flex-2"
+                (searchTagEvent)="loadByTagHandler($event)" class=" w-full flex-1 flex-grow-1"></app-tags-select>
+            <app-search-bar [posts]="posts" (loadPosts)="loadPosts()" class="w-full flex-2 flex-grow-1"
                 (searchEvent)="loadByTagHandler($event)"></app-search-bar>
         </div>
 

@@ -30,7 +30,6 @@ export class PostsComponent implements OnInit {
   loadPosts() {
     this.postService.getPosts().subscribe({
       next: (posts: any) => {
-        console.log('Posts fetched');
         this.posts = posts;
       },
       error: (error: any) => {
@@ -40,10 +39,8 @@ export class PostsComponent implements OnInit {
   }
 
   loadByTagHandler(tag: string) {
-    console.log('Tag clicked:', tag);
     this.postService.getPostsByTag(tag).subscribe({
       next: (posts: any) => {
-        console.log('posts by tag', posts);
         this.posts = posts;
       },
       error: (error: any) => {
