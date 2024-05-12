@@ -4,26 +4,52 @@
     <div class="container mx-auto py-5 justify-center">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6"
             *ngIf="posts.length > 0; else noPostsMessage">
-            @for (post of posts; track post.id) {
-            <div [id]="post.id" class="flex flex-col gap-3 p-3 w-full border-2 border-indigo-600 rounded">
-                <a [routerLink]="['/posts/', post.id]">
-
-                    <div class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block"
-                            src="https://dummyimage.com/420x260">
-                    </div>
-                    <div class="mt-4 flex flex-col gap-1 w-full">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{post.title}}</h3>
-                        <ul class="mt-1 flex flex-row gap-1">
-                            <li *ngFor="let tag of post.tags">{{ tag }}</li>
-                        </ul>
-                        <p class="text-gray-900 title-font text-sm">{{post.summary}}</p>
-
-                    </div>
-                </a>
-            </div>
-            }
+            <app-postcard *ngFor="let post of posts" [post]="post" [loadByTagHandler]="loadByTagHandler"></app-postcard>
         </div>
+        <!-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6"
+            *ngIf="posts.length > 0; else noPostsMessage">
+            @for (post of posts; track post.id) {
+            <mat-card [id]="post.id" class="flex flex-col gap-3 w-full border-2 border-indigo-600 rounded">
+                <mat-card-header class="flex flex-col gap-1 w-full">
+                    <mat-card-title
+                        class="text-gray-500 text-xs tracking-widest title-font">{{post.title}}</mat-card-title>
+                    <mat-chip-set aria-label="Fish selection" class="mt-1 flex flex-row gap-1">
+                        <mat-chip (click)="loadByTag(tag)" *ngFor="let tag of post.tags">{{
+                            tag
+                            }}</mat-chip>
+                    </mat-chip-set>
+                </mat-card-header>
+                <div class="block relative h-48 rounded overflow-hidden">
+                    <a [routerLink]="['/posts/', post.id]">
+                        <img mat-card-image [alt]="post.title" class="object-cover object-center w-full h-full block"
+                            [src]="post.content.image">
+                    </a>
+                </div>
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                Summary (click to read)
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>{{post.summary}}</p>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel [expanded]="post.isExpanded" (opened)="post.isExpanded = true"
+                        (closed)="post.isExpanded = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Content
+                            </mat-panel-title>
+                            <mat-panel-description class="justify-end">
+                                {{post.isExpanded ? 'Hide text' : 'Show text'}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>{{post.content.text}}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-card>
+            }
+        </div> -->
 
         <ng-template #noPostsMessage>
             <p>No posts available.</p>

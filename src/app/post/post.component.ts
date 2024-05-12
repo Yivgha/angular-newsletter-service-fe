@@ -9,4 +9,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './post.component.html',
   styleUrl: './post.component.css',
 })
-export class PostComponent {}
+export class PostComponent implements OnInit {
+  http = inject(HttpClient);
+  ngOnInit(): void {}
+}

@@ -1,30 +1,61 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PostService } from '../../services/post.service';
+import { MatChipsModule } from '@angular/material/chips';
+import { PostcardComponent } from '../postcard/postcard.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink, CommonModule],
+  imports: [
+    NavbarComponent,
+    FooterComponent,
+    RouterLink,
+    CommonModule,
+    MatChipsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatExpansionModule,
+    PostcardComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  http = inject(HttpClient);
-  posts: any = [];
+  constructor(private postService: PostService) {}
+
+  posts: any[] = [];
 
   ngOnInit(): void {
-    this.fetchPosts();
+    this.loadPosts();
   }
 
-  fetchPosts() {
-    this.http
-      .get('https://fastapi-python-be-6c5comhxpq-oe.a.run.app/posts?_limit=10')
-      .subscribe((posts: any) => {
+  loadPosts() {
+    this.postService.getPostsHome().subscribe({
+      next: (posts: any) => {
         this.posts = posts;
-      });
+      },
+      error: (error: any) => {
+        console.error(error);
+      },
+    });
+  }
+
+  loadByTagHandler(tag: string) {
+    console.log('Tag clicked:', tag);
+    this.postService.getPostsByTag(tag).subscribe({
+      next: (posts: any) => {
+        this.posts = posts;
+      },
+      error: (error: any) => {
+        console.error(error);
+      },
+    });
   }
 }
