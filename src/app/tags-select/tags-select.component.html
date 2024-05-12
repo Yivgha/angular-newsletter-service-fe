@@ -1,0 +1,9 @@
+<mat-form-field [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="getFloatLabelValue()" class="w-full">
+    <mat-label>Select a tag</mat-label>
+    <mat-select>
+        <mat-option [value]="" (click)="refetchAllPosts()">All</mat-option>
+        @for (tag of uniqueTags; track tag) {
+        <mat-option [value]="tag" (click)="searchPostsByTag(tag)">{{tag}}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>

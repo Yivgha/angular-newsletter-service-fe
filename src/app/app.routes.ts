@@ -11,14 +11,19 @@ export const routes: Routes = [
   { path: 'home', title: 'Home', component: HomeComponent },
   { path: 'about', title: 'About', component: AboutComponent },
   { path: 'contact', title: 'Contact', component: ContactComponent },
-  { path: 'posts', title: 'Posts', component: PostsComponent },
+  {
+    path: 'posts',
+    title: 'Posts',
+    component: PostsComponent,
+    pathMatch: 'full',
+  },
   {
     path: 'posts/:id',
     title: 'Post',
     component: PostComponent,
     pathMatch: 'full',
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', title: 'Error', component: ErrorPageComponent },
 ];
 
