@@ -1,7 +1,18 @@
 <app-go-back></app-go-back>
-<section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto min-h-[550px]">
-        <p>post works!</p>
-    </div>
+<section *ngIf="post" class="text-gray-600 body-font w-full h-full">
+    <div class=" px-5 py-3 mx-auto flex flex-col gap-4 w-full items-center">
+        <h1 class="font-bold text-lg">{{post.title}}</h1>
+        <h2 class="text-sm text-center">{{post.summary}}</h2>
+        <mat-chip-set aria-label="Tag selection" class="mt-1 flex flex-row gap-1">
+            <mat-chip *ngFor="let tag of post.tags">{{ tag }}</mat-chip>
+        </mat-chip-set>
 
+        <div class="block relative h-180 rounded overflow-hidden w-1/2">
+
+            <img mat-card-image [alt]="post.title" class="object-cover object-center w-full h-full block"
+                [src]="post.content.image">
+
+        </div>
+        <p class="text-justify text-base">{{post.content.text}}</p>
+    </div>
 </section>

@@ -6,7 +6,7 @@
         </mat-chip-set>
     </mat-card-header>
     <div class="block relative h-48 rounded overflow-hidden">
-        <a [routerLink]="['/posts/', post.id]">
+        <a [routerLink]="['/posts/', post.id]" [state]="{ post: post }">
             <img mat-card-image [alt]="post.title" class="object-cover object-center w-full h-full block"
                 [src]="post.content.image">
         </a>

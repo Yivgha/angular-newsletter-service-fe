@@ -12,6 +12,8 @@ const HOME_POSTS =
 const TAG_POSTS =
   'https://fastapi-python-be-6c5comhxpq-oe.a.run.app/posts/?tag=';
 
+const ID_POSTS = 'https://fastapi-python-be-6c5comhxpq-oe.a.run.app/posts/';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -28,5 +30,9 @@ export class PostService {
 
   getPostsByTag(tag: string) {
     return this.http.get(`${TAG_POSTS}${tag}`);
+  }
+
+  getPostById(id: string) {
+    return this.http.get(`${ID_POSTS}${id}`);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -29,10 +29,10 @@ export class PostcardComponent {
   constructor(private postService: PostService) {}
 
   @Input() post!: Post;
-  @Input() loadByTagHandler!: (tag: string) => void;
+  @Output() tagClick = new EventEmitter<string>();
   isExpanded = false;
 
   handleClick(tag: string) {
-    this.loadByTagHandler(tag);
+    this.tagClick.emit(tag);
   }
 }

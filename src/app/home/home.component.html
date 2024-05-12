@@ -1,10 +1,12 @@
 <app-navbar></app-navbar>
 <section class="text-gray-600 body-font min-h-[569px] w-full px-2 md:px-5">
 
-    <div class="container mx-auto py-5 justify-center">
+    <div class="mx-auto py-5 justify-center flex flex-col items-center gap-8">
+        <app-search-bar [posts]="posts" (loadPosts)="loadPosts()" class="md:w-[65%] w-full"
+            (searchEvent)="loadByTagHandler($event)"></app-search-bar>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6"
             *ngIf="posts.length > 0; else noPostsMessage">
-            <app-postcard *ngFor="let post of posts" [post]="post" [loadByTagHandler]="loadByTagHandler"></app-postcard>
+            <app-postcard *ngFor="let post of posts" [post]="post" (tagClick)="loadByTagHandler($event)"></app-postcard>
         </div>
         <!-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6"
             *ngIf="posts.length > 0; else noPostsMessage">

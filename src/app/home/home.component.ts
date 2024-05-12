@@ -9,6 +9,7 @@ import { PostcardComponent } from '../postcard/postcard.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatButtonModule,
     MatExpansionModule,
     PostcardComponent,
+    SearchBarComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -52,6 +54,7 @@ export class HomeComponent implements OnInit {
     this.postService.getPostsByTag(tag).subscribe({
       next: (posts: any) => {
         this.posts = posts;
+        console.log('posts by tag click', posts);
       },
       error: (error: any) => {
         console.error(error);

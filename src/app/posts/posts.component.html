@@ -5,7 +5,7 @@
 
             <ng-container *ngIf="posts.length > 0; else noPostsMessage">
                 <app-postcard *ngFor="let post of posts" [post]="post"
-                    [loadByTagHandler]="loadByTagHandler"></app-postcard>
+                    (tagClick)="loadByTagHandler($event)"></app-postcard>
             </ng-container>
         </div>
 
