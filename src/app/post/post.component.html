@@ -10,7 +10,7 @@
         <div class="block relative h-180 rounded overflow-hidden w-1/2">
 
             <img mat-card-image [alt]="post.title" class="object-cover object-center w-full h-full block"
-                [src]="post.content.image">
+                [src]="post.content.image" loading="lazy">
 
         </div>
         <p class="text-justify text-base">{{post.content.text}}</p>
